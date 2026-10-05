@@ -1,12 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VI - Artemis Armada</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artemis Armada VI — The Cosmos Chronicles</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --surface: #121a2b;
+      --surface-2: #1a2438;
+      --border: #2a3650;
+      --text: #e8eef8;
+      --muted: #9aabc4;
+      --accent: #4fc3f7;
+      --accent-2: #81d4fa;
+      --gold: #ffd54f;
+      --success: #66bb6a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1.5px 1.5px at 80% 20%, rgba(255,255,255,0.35), transparent),
+        radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.25), transparent),
+        radial-gradient(1px 1px at 10% 60%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1.5px 1.5px at 90% 50%, rgba(255,255,255,0.2), transparent);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-bottom: 0.35rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .intro {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 2.5rem;
+      color: var(--muted);
+    }
+
+    .intro strong {
+      color: var(--accent-2);
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      color: var(--accent);
+      margin: 2.25rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin: 1.5rem 0 0.6rem;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0.5rem 0 1rem;
+    }
+
+    li {
+      position: relative;
+      padding-left: 1.35rem;
+      margin-bottom: 0.55rem;
+      color: var(--muted);
+    }
+
+    li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.85em;
+    }
+
+    li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 600px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .act {
+      background: var(--surface-2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .act h3 {
+      margin-top: 0;
+      margin-bottom: 0.45rem;
+    }
+
+    .act ul {
+      margin-bottom: 0;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer .signoff {
+      color: var(--accent-2);
+      font-style: italic;
+      margin-bottom: 0.35rem;
+    }
+
+    footer .team {
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to VI</h1>
-    <p>This is my static site deployed via GitHub Pages.</p>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="container">
+    <header>
+      <p class="eyebrow">Event Announcement</p>
+      <h1>ARTEMIS ARMADA VI</h1>
+      <p class="subtitle">The Cosmos Chronicles</p>
+      <p class="meta">
+        <strong>Capital University</strong> · Columbus, Ohio<br>
+        <strong>July 9 – 11, 2027</strong>
+      </p>
+    </header>
+
+    <p class="intro">
+      Join us for the next chapter of Artemis Armada!
+      <strong>Artemis Armada VI: The Cosmos Chronicles</strong> will deliver a more immersive experience than ever before, with dedicated spaces for each bridge and small craft, private communications, and an epic campaign chronicling the Terran Stellar Diaspora.
+    </p>
+
+    <h2>Event Highlights</h2>
+
+    <h3>Artemis Armada</h3>
+    <ul>
+      <li><strong>Ticket Price:</strong> Capped at $100 per person — includes lodging</li>
+      <li><strong>Capacity:</strong> Space for 10 bridges plus 10 small craft (fighters)</li>
+      <li><strong>Equipment:</strong> Capital University and the Armada event team will provide all machines — attendees need bring nothing</li>
+      <li><strong>Immersive Experience:</strong> A stronger focus on immersion than previous Armadas</li>
+    </ul>
+
+    <div class="card">
+      <ul>
+        <li>Each bridge will be in its own dedicated space, separated by walls, partitions, or buildings</li>
+        <li>Small craft pilots will have their own separate space</li>
+        <li>Ship-to-ship and ship-to-command communications via a private TeamSpeak 3 / Mumble server</li>
+      </ul>
+    </div>
+
+    <h3>Crew Assignment</h3>
+    <ul>
+      <li>Attendees who want to be on the same crew will be placed together</li>
+      <li>Attendees without a preference will be assigned to fill gaps or form new bridges as needed</li>
+    </ul>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>Lodging</h3>
+        <ul>
+          <li>Lodging at Capital University is included in the ticket price</li>
+          <li>Additional lodging options are available nearby (not covered by the ticket)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Food</h3>
+        <ul>
+          <li>Attendees are responsible for their own food costs</li>
+          <li>Several economical on-campus dining options are available</li>
+          <li>A wide variety of restaurants are located close to campus</li>
+          <li><strong>Important:</strong> No food or drink is allowed on the bridges</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Transportation</h3>
+    <ul>
+      <li><strong>By car:</strong> Plenty of free parking available on campus</li>
+      <li><strong>By air:</strong> Flying into Port Columbus Airport (CMH)? We will coordinate a complimentary shuttle to pick you up</li>
+    </ul>
+
+    <h2>The Cosmos Chronicles</h2>
+    <p style="color: var(--muted); margin-bottom: 0.75rem;">
+      Bridge crews will take part in scenarios that chronicle the <em>Terran Stellar Diaspora</em>. Crews will receive ratings based on their performance in each scenario. Most scenarios will be set in the frontier region known as the “Eastern Front” and will be organized into Acts.
+    </p>
+    <p class="note">Note: The following outline is one possible structure and is subject to change.</p>
+
+    <div class="act">
+      <h3>Act One: Expansion</h3>
+      <ul>
+        <li>Most advanced ship available at the start: Battleship</li>
+        <li>Only race encountered at the beginning: Kraliens</li>
+        <li>First-contact opportunities</li>
+      </ul>
+    </div>
+
+    <div class="act">
+      <h3>Act Two: A House Divided</h3>
+      <ul>
+        <li>Civil war has broken out among some of the colonies</li>
+        <li>Other races may become involved on either side</li>
+        <li>Potential player-versus-player (PVP) action</li>
+      </ul>
+    </div>
+
+    <div class="act">
+      <h3>Act Three: Galactic Conflict</h3>
+      <ul>
+        <li>Primarily large-scale fleet actions</li>
+      </ul>
+    </div>
+
+    <h2>Optional Family Programming</h2>
+    <p style="color: var(--muted); margin-bottom: 0.75rem;">
+      If there is sufficient interest, bridge crews may bring “civilians” (non-Artemis players such as spouses and children). Special programming will be available, including:
+    </p>
+    <ul>
+      <li>Visits to the Columbus Zoo and COSI (Center of Science and Industry)</li>
+      <li>Possible family-oriented events hosted by Capital University</li>
+      <li>Any off-campus family events will carry a separate price</li>
+      <li>All children must have a responsible adult with them at all times – no babysitting services offered</li>
+    </ul>
+
+    <footer>
+      <p class="signoff">We look forward to seeing you among the stars!</p>
+      <p class="team">— The Artemis Armada Event Team —</p>
+    </footer>
+  </div>
 </body>
 </html>
